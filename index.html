@@ -11,7 +11,8 @@
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" rel="stylesheet">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
 
 
@@ -24,7 +25,7 @@
         .sidebar {
             width: 240px;
             min-height: 100vh;
-            background:rgb(57, 57, 207);
+            background: rgb(57, 57, 207);
             padding-top: 20px;
             color: white;
             position: fixed;
@@ -48,19 +49,100 @@
         }
 
         /* Sub-navbar */
-        .sub-navbar {
-            background: #ffffff;
-            padding: 10px 20px;
-            border-bottom: 1px solid #ddd;
+        .topbar {
+            background-color: white;
+            padding: 12px 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 5px rgb(150, 150, 150);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        /* Top bar */
-        .topbar {
-            background: #fff;
-            padding: 15px;
-            margin-top: 10px;
+        .card-box {
+            background-color: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgb(200, 200, 200);
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .card-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgb(180, 180, 180);
+        }
+
+        .card-title {
+            font-size: 16px;
+            color: rgb(80, 80, 80);
+            margin-bottom: 10px;
+        }
+
+        .card-number {
+            font-size: 28px;
+            font-weight: bold;
+            color: rgb(32, 56, 100);
+        }
+
+        /* Graph */
+        .graph-box {
+            background-color: white;
+            height: 260px;
+            border-radius: 12px;
+            box-shadow: 0 0 5px rgb(180,180,180);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            margin-top: 25px;
+        }
+
+        /* Quick Activities */
+        .quick-box {
+            background-color: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgb(200,200,200);
+        }
+        .quick-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: rgb(32, 56, 100);
+            border: none;
+            color: white;
             border-radius: 8px;
-            box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 10px;
+        }
+        .quick-btn:hover {
+            background-color: rgb(48, 80, 140);
+        }
+
+        /* Tables */
+        .table-box {
+            background-color: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgb(200,200,200);
+        }
+        .table th {
+            background-color: rgb(32, 56, 100);
+            color: white;
+        }
+
+        /* Events Box */
+        .events-box {
+            background-color: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgb(200,200,200);
+        }
+        .event {
+            padding: 10px;
+            background-color: rgb(240,240,255);
+            border-left: 4px solid rgb(32,56,100);
+            margin-bottom: 10px;
+            border-radius: 6px;
         }
     </style>
 </head>
@@ -82,81 +164,140 @@
     <div class="content">
 
         <!-- SUB NAVBAR ABOVE TOPBAR -->
-        <div class="sub-navbar d-flex justify-content-between align-items-center">
-            <h5 class="mb-0">Student Management Dashboard</h5>
-
-            <div>
-                <button class="btn btn-sm btn-outline-primary">Export</button>
-                <button class="btn btn-sm btn-primary">Add New</button>
-            </div>
-        </div>
-
-        <!-- TOP MENU BAR -->
-        <div class="topbar d-flex justify-content-between align-items-center">
-            <h4 class="mb-0">Overview</h4>
-
-            <div>
-                <input type="date" class="form-control d-inline-block" style="width:150px;">
-                <button class="btn btn-dark btn-sm ms-2">Filter</button>
-            </div>
+        <div class="topbar mb-4">
+            <h4>Student Management System</h4>
+            <button class="btn btn-primary">Sign In</button>
         </div>
 
         <!-- DASHBOARD CARDS -->
-        <div class="row mt-4">
+        <div class="row g-4">
+
             <div class="col-md-3">
-                <div class="card shadow-sm p-3">
-                    <h6>Total Students</h6>
-                    <h3>1,200</h3>
+                <div class="card-box">
+                    <p class="card-title">Total Students</p>
+                    <p class="card-number">1,250</p>
                 </div>
             </div>
 
             <div class="col-md-3">
-                <div class="card shadow-sm p-3">
-                    <h6>Present Today</h6>
-                    <h3>950</h3>
+                <div class="card-box">
+                    <p class="card-title">Total Courses</p>
+                    <p class="card-number">32</p>
                 </div>
             </div>
 
             <div class="col-md-3">
-                <div class="card shadow-sm p-3">
-                    <h6>Teachers</h6>
-                    <h3>48</h3>
+                <div class="card-box">
+                    <p class="card-title">Today's Attendance</p>
+                    <p class="card-number">87%</p>
                 </div>
             </div>
 
             <div class="col-md-3">
-                <div class="card shadow-sm p-3">
-                    <h6>Courses Running</h6>
-                    <h3>32</h3>
+                <div class="card-box">
+                    <p class="card-title">New Admissions</p>
+                    <p class="card-number">45</p>
+                </div>
+            </div>
+            <div class="row g-4 mt-1">
+                <div class="col-md-3">
+                    <div class="card-box">
+                        <p class="card-title">Reports Collected</p>
+                        <p class="card-number">1,000</p>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="card-box">
+                        <p class="card-title">Teachers</p>
+                        <p class="card-number">58</p>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="card-box">
+                        <p class="card-title">Hostel Students</p>
+                        <p class="card-number">340</p>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="card-box">
+                        <p class="card-title">Library Books</p>
+                        <p class="card-number">12,500</p>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- CHART + TABLE SECTION -->
-        <div class="row mt-4">
-            <!-- Chart Placeholder -->
+        <!-- MAIN CONTENT SECTIONS -->
+        <div class="row mt-4 g-4">
+            <!-- LEFT SIDE -->
             <div class="col-md-8">
-                <div class="card shadow-sm p-3" style="min-height: 300px;">
-                    <h5>Attendance Trend</h5>
-                    <hr>
+                <!-- Graph -->
+                <div class="graph-box mb-4">
+                    📈 Graph / Chart Placeholder (No JS Used)
                 </div>
+                <!-- Recent Students -->
+                <div class="table-box mb-4">
+                    <h5>Recent Students</h5>
+                    <table class="table table-bordered mt-3">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Class</th>
+                                <th>Roll</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Suman Rai</td>
+                                <td>10</td>
+                                <td>15</td>
+                                <td>Active</td>
+                            </tr>
+                            <tr>
+                                <td>Aarati Lama</td>
+                                <td>9</td>
+                                <td>21</td>
+                                <td>Active</td>
+                            </tr>
+                            <tr>
+                                <td>Rojina Magar</td>
+                                <td>11</td>
+                                <td>5</td>
+                                <td>Pending</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
             </div>
 
-            <!-- Table Placeholder -->
+            <!-- RIGHT SIDE -->
             <div class="col-md-4">
-                <div class="card shadow-sm p-3" style="min-height: 300px;">
-                    <h5>Recent Activities</h5>
-                    <hr>
-                    <ul>
-                        <li>New student added</li>
-                        <li>Attendance updated</li>
-                        <li>New course assigned</li>
-                        <li>Profile edited</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
 
+                <!-- Quick Activities -->
+                <div class="quick-box mb-4">
+                    <h5>Quick Activities</h5><br>
+                    <button class="quick-btn">+ Add Student</button>
+                    <button class="quick-btn">+ Take Attendance</button>
+                    <button class="quick-btn">+ Add Course</button>
+                    <button class="quick-btn">+ Generate Report</button>
+                </div>
+
+                <!-- Upcoming Events -->
+                <div class="events-box">
+                    <h5>Upcoming Events</h5>
+                    <div class="event">Parent Meeting – 21st Nov</div>
+                    <div class="event">Sports Week – 25th Nov</div>
+                    <div class="event">Exam Starts – 10th Dec</div>
+                </div>
+
+            </div>
+
+        </div>
     </div>
 
     <!-- Bootstrap JS -->
