@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Grades</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #f5f6fa;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 240px;
+            min-height: 100vh;
+            background: #212529;
+            color: white;
+            position: fixed;
+            padding-top: 20px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .sidebar h4 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .sidebar a {
+            color: #adb5bd;
+            padding: 12px 20px;
+            display: block;
+            text-decoration: none;
+            margin-bottom: 5px;
+            border-radius: 6px;
+        }
+
+        .sidebar a:hover,
+        .sidebar a.active {
+            background: #343a40;
+            color: white;
+        }
+
+        .sidebar button {
+            margin: 15px 20px;
+            width: 80%;
+        }
+
+        /* Content */
+        .content {
+            margin-left: 240px;
+            padding: 30px;
+        }
+
+        .grades-table {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(180, 180, 180, 0.5);
+        }
+
+        .grades-table th,
+        .grades-table td {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Role Protection -->
+    <script>
+        if (localStorage.getItem("userRole") !== "student") {
+            window.location.href = "../signin.html";
+        }
+    </script>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h4>Student Panel</h4>
+
+        <a href="student-dashboard.html"><i class="fa-solid fa-house me-2"></i> Dashboard</a>
+        <a href="courses.html"><i class="fa-solid fa-book me-2"></i> Courses</a>
+        <a href="attendance.html"><i class="fa-solid fa-calendar-check me-2"></i> Attendance</a>
+        <a href="grades.html" class="active"><i class="fa-solid fa-marker me-2"></i> Grades</a>
+        <a href="messages.html"><i class="fa-solid fa-comments me-2"></i> Messages</a>
+        <a href="settings.html"><i class="fa-solid fa-gear me-2"></i> Profile Settings</a>
+
+        <button class="btn btn-danger" id="logoutBtn">Logout</button>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+        <h2 class="mb-3">My Grades</h2>
+        <p class="text-muted">View your grades for each course:</p>
+
+        <div class="grades-table table-responsive mt-3">
+            <table class="table table-striped table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Course</th>
+                        <th>Midterm</th>
+                        <th>Final</th>
+                        <th>Total</th>
+                        <th>Grade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Mathematics</td>
+                        <td>38</td>
+                        <td>50</td>
+                        <td>88</td>
+                        <td>A</td>
+                    </tr>
+                    <tr>
+                        <td>Science</td>
+                        <td>32</td>
+                        <td>45</td>
+                        <td>77</td>
+                        <td>B+</td>
+                    </tr>
+                    <tr>
+                        <td>English</td>
+                        <td>28</td>
+                        <td>40</td>
+                        <td>68</td>
+                        <td>B</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Logout Script -->
+    <script>
+        document.getElementById("logoutBtn").addEventListener("click", function () {
+            localStorage.removeItem("userRole");
+            window.location.href = "../landingpage.html";
+        });
+    </script>
+
+</body>
+
+</html>

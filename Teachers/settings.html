@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Profile Settings</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+
+    <style>
+        body {
+            background-color: #f5f6fa;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 240px;
+            min-height: 100vh;
+            background: #212529;
+            color: white;
+            position: fixed;
+            padding-top: 20px;
+
+              display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .sidebar h4 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .sidebar a {
+            color: #adb5bd;
+            padding: 12px 20px;
+            display: block;
+            text-decoration: none;
+            margin-bottom: 5px;
+            border-radius: 6px;
+        }
+
+        .sidebar a:hover,
+        .sidebar a.active {
+            background: #343a40;
+            color: white;
+        }
+
+        .sidebar button {
+            margin: 15px 20px;
+            width: 80%;
+        }
+
+        /* Content */
+        .content {
+            margin-left: 240px;
+            padding: 30px;
+        }
+
+        .profile-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(180, 180, 180, 0.5);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .profile-card h3 {
+            margin-bottom: 20px;
+        }
+
+        .profile-card label {
+            font-weight: 500;
+        }
+
+        .profile-card input {
+            margin-bottom: 15px;
+        }
+
+        .profile-card button {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Protect Page -->
+    <script>
+        if (localStorage.getItem("userRole") !== "teacher") {
+            window.location.href = "../signin.html";
+        }
+    </script>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h4>Teacher Panel</h4>
+
+        <a href="teacher-dashboard.html"><i class="fa-solid fa-house me-2"></i> Dashboard</a>
+        <a href="attendance.html"><i class="fa-solid fa-calendar-check me-2"></i> Attendance</a>
+        <a href="grades.html"><i class="fa-solid fa-book me-2"></i> Grades</a>
+        <a href="student-profiles.html"><i class="fa-solid fa-user me-2"></i> Student Profiles</a>
+        <a href="courses.html"><i class="fa-solid fa-chalkboard-teacher me-2"></i> Courses</a>
+        <a href="messages.html"><i class="fa-solid fa-comments me-2"></i> Messages</a>
+        <a href="reports.html"><i class="fa-solid fa-file-lines me-2"></i> Reports</a>
+        <a href="settings.html" class="active"><i class="fa-solid fa-gear me-2"></i> Profile Settings</a>
+
+        <button class="btn btn-danger" id="logoutBtn">Logout</button>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+        <div class="profile-card">
+            <h3>My Profile</h3>
+
+            <form id="profileForm">
+                <div class="mb-3">
+                    <label for="fullname" class="form-label">Full Name</label>
+                    <input type="text" class="form-control" id="fullname" placeholder="Teacher Name" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email Address</label>
+                    <input type="email" class="form-control" id="email" placeholder="teacher@example.com" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="phone" class="form-label">Phone Number</label>
+                    <input type="tel" class="form-control" id="phone" placeholder="980xxxxxxxx">
+                </div>
+
+                <div class="mb-3">
+                    <label for="subject" class="form-label">Subjects Assigned</label>
+                    <input type="text" class="form-control" id="subject" placeholder="Math, Science, etc.">
+                </div>
+
+                <div class="mb-3">
+                    <label for="password" class="form-label">Change Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="New Password">
+                </div>
+
+                <button type="submit" class="btn btn-primary"><i class="fa-solid fa-save me-2"></i> Save Changes</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JS Scripts -->
+    <script>
+        // Logout
+        document.getElementById("logoutBtn").addEventListener("click", function () {
+            localStorage.removeItem("userRole");
+            window.location.href = "../landingpage.html";
+        });
+
+        // Load example teacher data
+        window.addEventListener("DOMContentLoaded", function () {
+            if (localStorage.getItem("teacherProfile")) {
+                let data = JSON.parse(localStorage.getItem("teacherProfile"));
+                document.getElementById("fullname").value = data.fullname;
+                document.getElementById("email").value = data.email;
+                document.getElementById("phone").value = data.phone;
+                document.getElementById("subject").value = data.subject;
+            }
+        });
+
+        // Save profile changes
+        document.getElementById("profileForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            let teacherProfile = {
+                fullname: document.getElementById("fullname").value,
+                email: document.getElementById("email").value,
+                phone: document.getElementById("phone").value,
+                subject: document.getElementById("subject").value
+            };
+
+            localStorage.setItem("teacherProfile", JSON.stringify(teacherProfile));
+
+            alert("Profile updated successfully!");
+        });
+    </script>
+
+</body>
+</html>

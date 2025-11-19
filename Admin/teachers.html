@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teachers Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: #f4f6f9;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            background: #212529;
+            padding: 20px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .sidebar h4 {
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .sidebar a {
+            color: #adb5bd;
+            text-decoration: none;
+            display: block;
+            padding: 10px 5px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+        }
+
+        .sidebar a:hover {
+            background: #343a40;
+            color: #fff;
+        }
+
+        .content {
+            margin-left: 250px;
+            padding: 25px;
+        }
+
+        .page-header {
+            background: #fff;
+            padding: 18px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .page-header h3 {
+            margin: 0;
+        }
+
+        .btn-action {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h4>Admin Panel</h4>
+        <a href="admin-dashboard.html" class="active"><i class="fa-solid fa-house"></i> Dashboard</a>
+        <a href="admission.html"><i class="fa-solid fa-file"></i> Admissions</a>
+        <a href="student.html"><i class="fa-solid fa-circle-user"></i> Students</a>
+        <a href="teachers.html"><i class="fa-solid fa-user-tie"></i> Teachers</a>
+        <a href="attendance.html"><i class="fa-solid fa-calendar-check"></i> Attendance</a>
+        <a href="fees.html"><i class="fa-solid fa-money-bill-wave"></i> Fees & Payments</a>
+        <a href="reports.html"><i class="fa-regular fa-file"></i> Reports</a>
+        <a href="settings.html"><i class="fa-solid fa-gear"></i> Settings</a>
+        <button class="btn btn-danger" id="logoutBtn">Logout</button>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h3>Teachers Management</h3>
+            <small class="text-muted">Admin / Teachers</small>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="mb-4">
+            <a href="add-teacher.html" class="btn btn-primary me-2"><i class="fa-solid fa-plus me-1"></i> Add
+                Teacher</a>
+            <a href="assign-classes.html" class="btn btn-secondary"><i class="fa-solid fa-chalkboard-teacher me-1"></i>
+                Assign Classes</a>
+        </div>
+
+        <!-- Teachers Table -->
+        <div class="card p-3 shadow-sm">
+            <table class="table table-hover align-middle">
+                <thead class="table-light">
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Department / Subject</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>John Doe</td>
+                        <td>john@example.com</td>
+                        <td>+977 9800000000</td>
+                        <td>Mathematics</td>
+                        <td><span class="badge bg-success">Active</span></td>
+                        <td>
+                            <a href="edit-teacher.html" class="btn btn-sm btn-warning btn-action"><i
+                                    class="fa-solid fa-pen"></i></a>
+                            <a href="#" class="btn btn-sm btn-danger btn-action"><i class="fa-solid fa-trash"></i></a>
+                            <a href="view-teacher.html" class="btn btn-sm btn-info btn-action"><i
+                                    class="fa-solid fa-eye"></i></a>
+                        </td>
+                    </tr>
+                    <!-- Repeat teacher rows as needed -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!--JavaScript for Signup-->
+    <script>
+        document.getElementById("logoutBtn").addEventListener("click", function () {
+
+            // Remove saved role (logout)
+            localStorage.removeItem("userRole");
+
+            // Redirect to landing page
+            window.location.href = "../landingpage.html";
+        });
+    </script>
+
+</body>
+
+</html>
